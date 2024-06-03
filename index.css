@@ -1,0 +1,325 @@
+*,
+*::after,
+*::before {
+	box-sizing: border-box;
+}
+
+:root {
+	font-size: 12px;
+}
+
+body {
+	margin: 0;
+	overflow: hidden;
+	--color-text: #fff;
+	--color-gr-1: #ece4b7;
+	--color-gr-2: #fe9053;
+	--color-bg: #272f2e;
+	--color-link: #6d91c9;
+	--color-link-hover: #997950;
+	--padding-ver: 1.5rem;
+	--padding-hor: 1.5rem;
+	--color-bg-overlay: #613613 ;
+	--color-back: #E2B091;
+	--color-back-hover: #EABCAC;
+	color: var(--color-text);
+	background-color: var(--color-bg);
+	font-family: area-normal, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+a {
+	text-decoration: none;
+	color: var(--color-link);
+	outline: none;
+}
+
+a:hover {
+	color: var(--color-link-hover);
+	outline: none;
+}
+
+/* Better focus styles from https://developer.mozilla.org/en-US/docs/Web/CSS/:focus-visible */
+a:focus {
+	/* Provide a fallback style for browsers that don't support :focus-visible */
+	outline: none;
+	background: lightgrey;
+}
+
+a:focus:not(:focus-visible) {
+	/* Remove the focus indicator on mouse-focus for browsers that do support :focus-visible */
+	background: transparent;
+}
+
+a:focus-visible {
+	/* Draw a very noticeable focus style for keyboard-focus on browsers that do support :focus-visible */
+	outline: 2px solid red;
+	background: transparent;
+}
+.rect-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 100px;
+    height: 50px;
+    background-color: #874E4C;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#myButton {
+    transition: all 0.3s ease;
+}
+
+#myButton:hover {
+    background-color: #FAD5A6;
+}
+.unbutton {
+	background: none;
+	border: 0;
+	padding: 0;
+	margin: 0;
+	font: inherit;
+	cursor: pointer;
+}
+
+.unbutton:focus {
+	outline: none;
+}
+
+.hidden {
+	opacity: 0;
+	pointer-events: none;
+	position: absolute;
+}
+
+main {
+	display: grid;
+	height: 100vh;
+	padding: 0;
+	position: relative;
+}
+
+.intro,
+.content-wrap {
+	position: relative;
+	grid-area: 1 / 1 / 2 / 2;
+}
+
+.intro {
+	flex: 1;
+	max-height: 80vmax;
+	margin: auto 0;
+	padding: 0 var(--padding-ver);
+	font-size: 9vw;
+	line-height: 1;
+	text-transform: uppercase;
+	display: flex;
+	flex-wrap: wrap;
+	column-gap: 2vw;
+	row-gap: 1vw;
+	white-space: nowrap;
+	font-family: "stinger-variable", sans-serif;
+	font-variation-settings: "wdth" 120, "wght" 300;
+	background-color: var(--color-text);
+	background-image: linear-gradient(45deg, var(--color-gr-1), var(--color-gr-2));
+	background-size: 100%;
+	background-repeat: repeat;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	-moz-background-clip: text;
+	-moz-text-fill-color: transparent;
+	will-change: transform, opacity;
+  align-items: center;
+}
+
+.intro--closed {
+	opacity: 0;
+	pointer-events: none;
+}
+
+.font-1 {
+  font-family: "Bai Jamjuree", sans-serif;
+  font-weight: 500;
+}
+
+.font-2 {
+	font-family: "Bai Jamjuree", sans-serif;
+  font-weight: 600;
+}
+
+.intro__text {
+	line-height: 2;
+	padding-top: 0vw;
+}
+
+.intro__text .highlight {
+  background-color: var(--color-text);
+	background-image: linear-gradient(45deg, #ff8cb3, #bc8bb6);
+  background-size: 100%;
+	background-repeat: repeat;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	-moz-background-clip: text;
+	-moz-text-fill-color: transparent;
+	will-change: transform, opacity;
+  align-items: center;
+}
+
+.intro__image {
+	flex: 1;
+	position: relative;
+	cursor: pointer;
+	will-change: transform;
+	background-size: cover;
+	background-position: 50% 30%;
+	border-radius: 1vw;
+	min-width: 50px;
+	max-width: 100%;
+	transition: opacity 0.3s;
+  height: 50vh;
+}
+
+.intro__image:hover {
+	opacity: 0.8;
+}
+
+.content-wrap {
+	align-self: stretch;
+	display: grid;
+	pointer-events: none;
+}
+
+.content {
+	opacity: 0;
+	pointer-events: none;
+	grid-area: 1 / 1 / -1 / -1;
+	display: grid;
+	grid-template-columns: 100%;
+	height: 100%;
+	grid-template-rows: 50% 1fr;
+	gap: 5vh;
+	padding: 2rem var(--padding-ver) 2rem;
+}
+
+.content--open {
+	opacity: 1;
+	pointer-events: auto;
+}
+
+.content__img {
+	position: relative;
+	overflow: hidden;
+	border-radius: 1.85rem;
+	display: grid;
+	will-change: transform, opacity;
+}
+
+.content__img-inner {
+	background-size: auto;
+	background-position: 50% 34%;
+}
+
+.content__text {
+	display: grid;
+	grid-template-areas: 'back number title''... ... title''meta meta meta';
+	grid-column-gap: 2rem;
+	grid-template-columns: auto 1fr auto;
+	grid-template-rows: auto 1fr auto;
+}
+
+.content__title {
+	font-variation-settings: "wdth" 120, "wght" 100;
+	grid-area: title;
+	margin: 0;
+	font-family: stinger-variable, sans-serif;
+	font-size: clamp(2rem, 5vw, 5rem);
+	background-color: var(--color-text);
+	background-image: linear-gradient(45deg, var(--color-gr-1), var(--color-gr-2));
+	background-size: 100%;
+	background-repeat: repeat;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	-moz-background-clip: text;
+	-moz-text-fill-color: transparent;
+	line-height: 1;
+	max-width: 30ch;
+	text-align: right;
+}
+
+.content__number {
+	grid-area: number;
+	line-height: 1;
+	margin-top: -1vw;
+	align-self: start;
+	font-size: clamp(3rem, 6vw, 10rem);
+	background-color: var(--color-text);
+	background-image: linear-gradient(45deg, var(--color-gr-1), var(--color-gr-2));
+	background-size: 100%;
+	background-repeat: repeat;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	-moz-background-clip: text;
+	-moz-text-fill-color: transparent;
+	position: relative;
+}
+
+.content__back {
+	grid-area: back;
+	overflow: hidden;
+	align-self: center;
+}
+
+.content__back svg {
+	width: 12vw;
+  height: 12vw;
+	fill: var(--color-back);
+	transition: fill 0.2s;
+}
+
+.content__back:hover svg {
+	fill: var(--color-back-hover);
+}
+
+.content__meta {
+	grid-area: meta;
+	text-transform: uppercase;
+	display: flex;
+	justify-content: space-between;
+	font-size: clamp(0.75rem, 3vw, 1.5rem);
+	line-height: 1;
+}
+
+.overlay {
+	grid-area: 1 / -1;
+	display: grid;
+	position: relative;
+	z-index: 1000;
+	pointer-events: none;
+	opacity: 0;
+	--columns: 20;
+	grid-template-columns: repeat(var(--columns), 1fr);
+  gap: 0;
+}
+
+.overlay div {
+	background: var(--color-bg-overlay);
+  margin: 0;
+  padding: 0;
+  border: none;
+  box-sizing: border-box; 
+}
+
+@media screen and (min-width: 53em) {
+	.intro__image {
+		min-width: 200px;
+		max-width: 50%;
+	}
+
+	.content {
+		padding-top: 5rem;
+	}
+}
